@@ -47,10 +47,10 @@ class text_clean:
             sentence = text_clean.delete_html(sentence)
         if keep_apostrophes:
             PATTERN = r'[?|$|&|*|%|@|(|)|~]'
-            filtered_sentence = re.sub(PATTERN, r'', sentence)
+            filtered_sentence = re.sub(PATTERN, r' ', sentence)
         else:
             PATTERN = r'[^a-zA-Z0-9 ]'
-            filtered_sentence = re.sub(PATTERN, r'', sentence)
+            filtered_sentence = re.sub(PATTERN, r' ', sentence)
         return filtered_sentence
 
     # 大小写转换
