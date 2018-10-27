@@ -24,14 +24,20 @@ class logTool():
     def close(self):
         self.reader.close()
 
-    def info(self, note):
+    def info(self, note, isPrint=1):
         self.open()
         print("[INFO:%s] : %s" %
-              (datetime.datetime.now(), note), file=self.reader)
+              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note), file=self.reader)
+        if isPrint:
+            print("[INFO:%s] : %s" %
+                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note))
         self.close()
 
-    def error(self, note):
+    def error(self, note, isPrint=1):
         self.open()
         print("[ERROR:%s] : %s" %
-              (datetime.datetime.now(), note), file=self.reader)
+              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note), file=self.reader)
+        if isPrint:
+            print("[ERROR:%s] : %s" %
+                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note))
         self.close()
