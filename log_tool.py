@@ -7,9 +7,12 @@ class logTool():
     path = ""
     reader = ""
 
-    def __init__(self, path):
+    basic_msg = ""
+
+    def __init__(self, path, basic_msg=""):
         print(path)
         self.path = path
+        self.basic_msg = basic_msg
         self.open()
         self.close()
 
@@ -26,18 +29,18 @@ class logTool():
 
     def info(self, note, isPrint=1):
         self.open()
-        print("[INFO:%s] : %s" %
-              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note), file=self.reader)
+        print("[INFO:%s]%s : %s" %
+              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.basic_msg, note), file=self.reader)
         if isPrint:
-            print("[INFO:%s] : %s" %
-                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note))
+            print("[INFO:%s]%s : %s" %
+                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.basic_msg, note))
         self.close()
 
     def error(self, note, isPrint=1):
         self.open()
-        print("[ERROR:%s] : %s" %
-              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note), file=self.reader)
+        print("[ERROR:%s]%s : %s" %
+              (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.basic_msg, note), file=self.reader)
         if isPrint:
-            print("[ERROR:%s] : %s" %
-                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), note))
+            print("[ERROR:%s]%s : %s" %
+                  (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), self.basic_msg, note))
         self.close()
